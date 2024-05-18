@@ -29,7 +29,7 @@ def dbs_price():
 @app.route("/end",methods=["GET","POST"])
 def end():
     global flag
-    flag = 1
+    flag == 1:
     return(render_template("index.html"))
 
 if __name__ == "__main__":
