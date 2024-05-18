@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import google.generativeai as palm
 
 app = Flask(__name__)
 
@@ -25,6 +26,16 @@ def prediction():
 def dbs_price():
     q = float(request.form.get("q"))
     return render_template("dbs_price.html", r=(q * -50.6) + 90.2)
+
+@app.route("/generate_text", methods=["GET", "POST"])
+def generate_text():
+    return render_template("generate_text.html")
+
+@app.route("/text_result_makersuite", methods=["GET", "POST"])
+def text_result_makersuite():
+    q = request.form.get("q")
+    
+    return render_template("text_result_makersuite.html", r=r)
 
 @app.route("/end", methods=["GET", "POST"])
 def end():
