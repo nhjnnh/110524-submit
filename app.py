@@ -12,7 +12,7 @@ def index():
 @app.route("/main",methods=["GET","POST"])
 def main():
     global flag, name
-    if flag == 1
+    if flag == 1:
         name = request.form.get("q")
         flag = 0
     return(render_template("main.html",r=name))
