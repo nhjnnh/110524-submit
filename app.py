@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request
 
+flag = 1
+name = ""
+
 app = Flask(__name__)
 
 @app.route("/",methods=["GET","POST"])
@@ -8,8 +11,11 @@ def index():
 
 @app.route("/main",methods=["GET","POST"])
 def main():
-    r = request.form.get("q")
-    return(render_template("main.html",r=r))
+    global flag, name
+    if flag == 1
+        name = request.form.get("q")
+        flag = 0
+    return(render_template("main.html",r=name))
 
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
@@ -19,6 +25,12 @@ def prediction():
 def dbs_price():
     q = float(request.form.get("q"))
     return(render_template("dbs_price.html",r=(q*-50.6)+90.2))
+
+@app.route("/end",methods=["GET","POST"])
+def end():
+    global flag
+    flag = 1
+    return(render_template("index.html"))
 
 if __name__ == "__main__":
     app.run()
