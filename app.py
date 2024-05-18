@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 flag = 1
 name = ""
+palm.configure(api_key="AIzaSyCOlwyukHbptkuc8DUGINSt7tcZocNR9MU")
 
+model = {"model" : "models/chat-bison-001"}
 @app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
@@ -34,8 +36,8 @@ def generate_text():
 @app.route("/text_result_makersuite", methods=["GET", "POST"])
 def text_result_makersuite():
     q = request.form.get("q")
-    
-    return render_template("text_result_makersuite.html", r=r)
+    r = palm.chat(**model, messages=q)
+    return render_template("text_result_makersuite.html", r=r.last)
 
 @app.route("/end", methods=["GET", "POST"])
 def end():
