@@ -84,7 +84,7 @@ def delete():
     conn = sqlite3.connect('log.db')
     c = conn.cursor()
     c.execute("Delete from user")
-    conn.commit(
+    conn.commit()
     c.close()
     conn.close()
     return render_template("delete.html")
